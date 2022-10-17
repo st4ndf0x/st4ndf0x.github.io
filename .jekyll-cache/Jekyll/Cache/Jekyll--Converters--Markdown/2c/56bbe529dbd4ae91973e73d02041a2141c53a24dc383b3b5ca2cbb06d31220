@@ -1,6 +1,0 @@
-I"�<h1>Corridor</h1>
-<p><strong>Espanol</strong></p>
-
-<p>Bienvenido, tienes el placer de leer mi primer writeup!.
-Hoy vamos a estar haciendo la sala <strong>Corridor</strong>, en esta sala exploraremos una vulnerabilidad llamada “<strong>IDOR</strong>”, la cual a muy grandes rasgos es la funcion cuando una aplicacion (en este caso web), permite a un usuario acceder directamente a objetos, en base a esto, debido a errores de implementacion de control de acceso, el usuario termina con el poder de acceder a objetos/directorios a los que no deberia tener permisos. Esta vulnerabilidad se encuentra en el Top 10 de OWASP 2017 - Broken Access Control.</p>
-:ET

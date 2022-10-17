@@ -1,0 +1,13 @@
+I"<p>Corridor
+Espanol</p>
+
+<p>Bienvenido, tienes el placer de leer mi primer writeup!.
+Hoy vamos a estar resolviendo la sala Corridor, en esta sala exploraremos una vulnerabilidad llamada “IDOR”, la cual a muy grandes rasgos es la función cuando una aplicación (en este caso web), permite a un usuario acceder directamente a objetos, en base a esto, debido a errores de implementación de control de acceso, el usuario termina con el poder de acceder a objetos/directorios a los que no debería tener permisos. Esta vulnerabilidad se encuentra en el Top 10 de OWASP 2017 - Broken Access Control.</p>
+
+<p>Dificultad: Fácil ~  Categoría: WEB</p>
+
+<p>Here we go!</p>
+
+<p>Iniciamos nuestra máquina, en conjunto de nuestra VPN, a mí, me entregó la siguiente dirección IP:</p>
+
+:ET

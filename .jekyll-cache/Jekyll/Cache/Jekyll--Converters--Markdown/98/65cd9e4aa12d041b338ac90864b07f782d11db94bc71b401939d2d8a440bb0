@@ -1,0 +1,18 @@
+I"`<h1>Corridor</h1>
+<p><strong>Espanol</strong></p>
+
+<p>Bienvenido, tienes el placer de leer mi primer writeup!.
+Hoy vamos a estar resolviendo la sala <strong>Corridor</strong>, en esta sala exploraremos una vulnerabilidad llamada “<strong>IDOR</strong>”, la cual a muy grandes rasgos es la función cuando una aplicación (en este caso web), permite a un usuario acceder directamente a objetos, en base a esto, debido a errores de implementación de control de acceso, el usuario termina con el poder de acceder a objetos/directorios a los que no debería tener permisos. Esta vulnerabilidad se encuentra en el Top 10 de <strong>OWASP 2017 - Broken Access Control</strong>.
+<img src="/img/rooms/easy/corridor/banner.png" alt="alt text" title="Corridor" /></p>
+
+<p><strong>Dificultad: <span style="color:green">Fácil</span> ~  Categoría: WEB</strong></p>
+
+<p><em>Here we go!</em></p>
+
+<p>Iniciamos nuestra máquina, en conjunto de nuestra VPN, a mí, me entregó la siguiente dirección IP:
+<img src="/img/rooms/easy/corridor/1.png" alt="alt text" /></p>
+
+<p>Yo, lo que siempre hago y lo recomiendo en el 90% de las veces, es agregar la dirección IP a nuestro archivo /etc/hosts, por 2 motivos, por si nos responde algún <strong>vhost</strong> y para no tener que acordarme de la dirección xD.</p>
+
+<p>Para esto vamos a nuestra terminal y escribimos vim /etc/hosts</p>
+:ET
