@@ -12,7 +12,7 @@ url: "https://st4ndf0x.github.io"
 #
 # NB! Without this *nothing* will work, because it's used in every path :)
 
-baseurl: 
+baseurl: / 
 
 # Google tracking id
 
@@ -30,7 +30,7 @@ force-https: True
 
 lang: "en"
 author: "Nicolás Reinoso Roa"
-title: ""
+title: "h4ck1ng@st4ndf0x:~"
 description: "Blog and website of st4ndf0x, a ctf player."
 keywords: "st4ndf0x, tryhackme, writeup"
 favicon: "/img/favicon.ico"
@@ -222,5 +222,5 @@ sass:
 gems:
   - jemoji
   - jekyll-feed
-  - jekyll-paginate
-  - [jekyll-paginate]
+  - jekyll
+  - jekyll paginate
