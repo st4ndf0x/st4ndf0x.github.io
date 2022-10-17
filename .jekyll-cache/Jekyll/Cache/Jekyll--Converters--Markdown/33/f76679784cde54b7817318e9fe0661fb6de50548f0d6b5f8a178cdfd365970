@@ -1,5 +1,5 @@
-I"�!<h1>Corridor</h1>
-<p>by st4ndf0x</p>
+I"�"<p><a href="https://tryhackme.com/room/corridor">CORRIDOR</a>
+by st4ndf0x  <img src="https://tryhackme-badges.s3.amazonaws.com/StandFox.png" alt="TryHackMe" /></p>
 
 <p>Bienvenido, tienes el placer de leer mi primer writeup!.
 Hoy vamos a estar resolviendo la sala <strong>Corridor</strong>, en esta sala exploraremos una vulnerabilidad llamada “<strong>IDOR</strong>”, la cual a muy grandes rasgos es la función cuando una aplicación (en este caso web), permite a un usuario acceder directamente a objetos, en base a esto, debido a errores de implementación de control de acceso, el usuario termina con el poder de acceder a objetos/directorios a los que no debería tener permisos. Esta vulnerabilidad se encuentra en el Top 10 de <strong>OWASP 2017 - Broken Access Control</strong>.
@@ -12,7 +12,7 @@ Hoy vamos a estar resolviendo la sala <strong>Corridor</strong>, en esta sala ex
 <p>Iniciamos nuestra máquina, en conjunto de nuestra VPN, a mí, me entregó la siguiente dirección IP:
 <img src="/img/rooms/easy/corridor/1.png" alt="alt text" /></p>
 
-<p>Yo, lo que siempre hago y lo recomiendo en el 90% de las veces, es agregar la dirección IP a nuestro archivo /etc/hosts, por 2 motivos, por si nos responde algún <strong>vhost</strong> y para no tener que acordarme de la dirección xD.</p>
+<p>Yo, lo que siempre hago y lo recomiendo en el 90% de las veces, es agregar la dirección IP a nuestro archivo /etc/hosts, por 2 motivos, por si nos responde algún <strong>vhost</strong> y para no tener que acordarme de la dirección jaja.</p>
 
 <p>Para esto vamos a nuestra terminal y escribimos vim /etc/hosts.
 AL darle enter, nos llevará a un documento de texto que debería estar así, si no ha sido configurado antes:
@@ -28,13 +28,13 @@ AL darle enter, nos llevará a un documento de texto que debería estar así, si
   <li>Escribir “<strong>wq!</strong>” (<em>w=write(escribir), q=quit(salir), !=Forzar salida</em>)</li>
 </ol>
 
-<p>Ahora con esto realizado, estamos listos para visualizar el dominio en el navegador: <strong>http://corridor.thm/</strong>
+<p>Ahora con esto realizado, estamos listos para visualizar el dominio en el navegador: <strong>http://corridor.thm/</strong>:
 <img src="/img/rooms/easy/corridor/4.png" alt="alt text" /></p>
 
-<p>Vemos que está funcionando correctamente. Ahora nos muestra una página web, en la cual podemos ver 13 puertas iguales, 6 a nuestro lado izquierdo, 6 a nuestro lado derecho y una en frente al fondo. Si pasamos el mouse por encima de la manilla de las mismas, podemos ver que cambia el logo de nuestro puntero y si holdeamos con el mouse, podemos ver que en cada puerta nos muestra un hash diferente. Un hash que a simple vista, pareciera ser MD5. Entonces <strong>¿abramos todas las puertas en una nueva pestaña?</strong>
+<p>Vemos que está funcionando correctamente. Ahora nos muestra una página web, en la cual podemos ver 13 puertas iguales, 6 a nuestro lado izquierdo, 6 a nuestro lado derecho y una en frente al fondo. Si pasamos el mouse por encima de la manilla de las mismas, podemos ver que cambia el logo de nuestro puntero y si holdeamos con el mouse, podemos ver que en cada puerta nos muestra un hash diferente. Un hash que a simple vista, pareciera ser MD5. Entonces <strong>¿abramos todas las puertas en una nueva pestaña?</strong>:
 <img src="/img/rooms/easy/corridor/5.png" alt="alt text" /></p>
 
-<p>En cada puerta que “abrimos”, nos muestra la misma imagen, una sala en blanco vacía, sin ninguna diferencia entre las demas. Pero si nos fijamos bien, cada sala nos muestra una URL diferente, con un HASH diferente.</p>
+<p>En cada puerta que “abrimos”, nos muestra la misma imagen, una sala en blanco vacía, sin ninguna diferencia entre las demas. Pero si nos fijamos bien, cada sala nos muestra una URL diferente, con un HASH diferente:</p>
 
 <p><em>Para no rellenar la página con 13 imagenes, solo mostraré 3</em>
 <img src="/img/rooms/easy/corridor/6.png" alt="alt text" />
@@ -56,18 +56,23 @@ Un hash a muy grandes rasgos, es una función criptográfica, que genera valores
 
 <p><em>Nosotros podemos usar muchas herramientas para esto, en este writeup mostraré una forma “local” y otra “online” de hacerlo</em></p>
 
-<p>Entonces, vamos a nuestra terminal y escribimos lo siguiente:
-hashcat -m 0 “hash.txt” /usr/share/wordlist/rockyou.txt</p>
+<p>Entonces, vamos a nuestra terminal y escribimos lo siguiente:</p>
 
-<p>Definición de comandos:
--m= Modo - Con esto le decimos a hashcat que algoritmo de desencriptamiento utilizaremos
-0= Modo MD5
-“hash.txt”= Ingresamos la ruta de nuestro archivo con los hashes, en este caso el mío es <strong>hash.txt</strong>
-/usr/share/wordlist/rockyou.txt= Le decimos la ruta del diccionario que queremos usar, en este caso y en el de la mayoría de los CTF, rockyou.txt.</p>
+<p>hashcat -m 0 “hash.txt” /usr/share/wordlist/rockyou.txt</p>
+
+<p><strong>Definición de comandos:</strong></p>
+
+<p>-m= Modo - Con esto le decimos a hashcat que algoritmo de desencriptamiento utilizaremos.</p>
+
+<p>0= Modo MD5</p>
+
+<p>“hash.txt”= Ingresamos la ruta de nuestro archivo con los hashes, en este caso el mío es <strong>hash.txt</strong></p>
+
+<p>/usr/share/wordlist/rockyou.txt= Le decimos la ruta del diccionario que queremos usar, en este caso y en el de la mayoría de los CTF, rockyou.txt.</p>
 
 <p>Lo ejecutamos y debería mostrar el procedimiento de decodificación, algo como esto:
 <img src="/img/rooms/easy/corridor/11.png" alt="alt text" />
-<em>Imagen sacada de hashcat.net ya que como yo ya hice la máquina, el verbose es distinto</em></p>
+<em>Imagen sacada de hashcat.net ya que como yo ya hice la máquina, el verbose es distinto.</em></p>
 
 <p>Si en el campo de <strong>Status</strong> dice <strong>Cracked</strong>, felicitaciones! has crackeado hashes MD5.
 Ahora para ver el resultado de esta decodificación, utilizamos el mismo comando que usamos para creackear, pero al final del comando agregamos el argumento <strong>–show</strong>, esto para que nos muestre el resultado. Debería mostrar esto:
@@ -84,10 +89,10 @@ Ahora para ver el resultado de esta decodificación, utilizamos el mismo comando
 
 <p>Para esto, podemos buscar en google algo así “<em>md5 encoder</em>”, yo personalmente recomomiendo <a href="https://elmah.io/tools/md5-encoder/">elmah.io</a>.</p>
 
-<p>Dentro, vamos a escribir el texto que queremos que encripte con hash MD5, probaremos primero con <strong>14</strong>
+<p>Dentro, vamos a escribir el texto que queremos que encripte con hash MD5, probaremos primero con <strong>14</strong>:
 <img src="/img/rooms/easy/corridor/13.png" alt="alt text" /></p>
 
-<p>Bueno, nos entrega este resultado, entonces, <em>¿probamos?</em>. Insertemoslo en nuestra URL a ver si nos muestra algo.
+<p>Bueno, nos entrega este resultado, entonces, <em>¿probamos?</em>. Insertemoslo en nuestra URL a ver si nos muestra algo:
 <img src="/img/rooms/easy/corridor/14.png" alt="alt text" />
 <em>Aparentemente, no nos muestra nada jaja, <strong>pero no perdamos la esperanza!</strong></em></p>
 

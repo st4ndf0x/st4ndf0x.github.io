@@ -30,17 +30,17 @@ force-https: True
 
 lang: "en"
 author: "Nicolás Reinoso Roa"
-title: "h4ck1ng@st4ndf0x:~"
-description: "Blog and website of John Smith, blogging mainly for tech. Opinions expressed are mine."
-keywords: "smith, jones, personal, jekyll, theme"
+title: ""
+description: "Blog and website of st4ndf0x, a ctf player."
+keywords: "st4ndf0x, tryhackme, writeup"
 favicon: "/img/favicon.ico"
 
 ################
 # Header layout #
 ################
 
-black-favicon: "/img/black-lab-glass.ico"
-logo: "/img/author.png" # leave blank if you don't want a logo
+black-favicon: "/img/kali32x32.ico"
+logo: "" # leave blank if you don't want a logo
 
 background-img: "../img/getty-hacker.jpg"
 
@@ -123,7 +123,7 @@ pinterest-share: True
 pocket-share: True
 vkontakte-share: True
 
-disqus-shortname: "personal-jekyll-theme"
+disqus-shortname: "st4ndf0x"
 
 syntax-highlight: True
 
@@ -143,7 +143,7 @@ events:
     description: "Cybersecurity Student at INACAP"
 # First image of the Timeline
 
-timeline-img: "/img/timeline/standfox.jpg"
+timeline-img: "/img/timeline/me.jpeg"
 
 ###########
 # Contact #
@@ -164,7 +164,7 @@ pgp: False
 
 # if the author_blurb is not set, then this feature is skipped
 author_blurb: "Estudiante de Ciberseguridad y jugador activo de CTF en la plataforma de TryHackMe."
-author_blurb_image: "/img/author.png"
+author_blurb_image: "/img/standfox.jpg"
 
 ##################
 # Social Buttons #
@@ -223,3 +223,4 @@ gems:
   - jemoji
   - jekyll-feed
   - jekyll-paginate
+  - [jekyll-paginate]
