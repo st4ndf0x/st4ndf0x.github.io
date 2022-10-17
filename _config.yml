@@ -42,7 +42,7 @@ favicon: "/img/favicon.ico"
 black-favicon: "/img/black-lab-glass.ico"
 logo: "/img/author.png" # leave blank if you don't want a logo
 
-background-img: "../img/intro-bg.jpg"
+background-img: "../img/getty-hacker.jpg"
 
 ##############################
 # Dynamic Text on the Header #
@@ -137,7 +137,7 @@ events:
     description: "eJPT ~ Junior Penetration Tester"
   - image: "/img/sadvisor.png"
     date: "August 2021"
-    description: "My first job such as Cybersecurity Analist"
+    description: "Got my first job as a Cybersecurity Analist intern"
   - image: "/img/timeline/inacap.png"
     date: "March 2018 - Today"
     description: "Cybersecurity Student at INACAP"
@@ -163,7 +163,7 @@ pgp: False
 # This works best when your author blurb image has a transparent background, or matches your site background color.
 
 # if the author_blurb is not set, then this feature is skipped
-author_blurb: "John Smith is an awesome person. He lives in Flatland, where he works on two-dimensional engineering projects. In his spare time, John likes to eat cotton candy."
+author_blurb: "Estudiante de Ciberseguridad y jugador activo de CTF en la plataforma de TryHackMe."
 author_blurb_image: "/img/author.png"
 
 ##################
