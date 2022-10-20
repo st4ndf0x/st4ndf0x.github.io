@@ -40,7 +40,7 @@ favicon: "/img/favicon.ico"
 ################
 
 black-favicon: "/img/kali32x32.ico"
-logo: "" # leave blank if you don't want a logo
+ # leave blank if you don't want a logo
 
 background-img: "../img/getty-hacker.jpg"
 
