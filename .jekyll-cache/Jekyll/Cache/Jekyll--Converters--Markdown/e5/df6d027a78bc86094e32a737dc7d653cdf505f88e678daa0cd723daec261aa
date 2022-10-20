@@ -1,0 +1,103 @@
+I"�<p>CORRIDOR
+by st4ndf0x</p>
+
+<p>Bienvenido, tienes el placer de leer mi primer writeup!.
+Hoy vamos a estar resolviendo la sala Corridor, en esta sala exploraremos una vulnerabilidad llamada “IDOR”, la cual a muy grandes rasgos es la función cuando una aplicación web, permite a un usuario acceder directamente a objetos, en base a esto, debido a errores de implementación de control de acceso, el usuario termina con el poder de acceder a objetos a los que no debería tener permisos. Esta vulnerabilidad se encuentra en el Top 10 de OWASP 2017 - Broken Access Control.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                       Dificultad: Fácil ~  Categoría: WEB
+</code></pre></div></div>
+
+<p>Here we go!</p>
+
+<p>Iniciamos nuestra máquina, en conjunto de nuestra VPN, a mí, me entregó la siguiente dirección IP:</p>
+
+<p>Yo, lo que siempre hago y lo recomiendo en el 90% de las veces, es agregar la dirección IP a nuestro archivo /etc/hosts, por 2 motivos, primero: si nos responde algún vhost. Segundo: para no tener que acordarme de la dirección IP jaja.</p>
+
+<p>Para esto vamos a nuestra terminal y escribimos vim /etc/hosts.
+AL darle enter, nos llevará a un documento de texto que debería estar así (si no ha sido configurado antes):</p>
+
+<p>Entonces, lo que tocaría hacer es (usando VIM), apretar la tecla INSERT y con las flechas de nuestro teclado movernos al la última IP antes del texto comentado con un “#” y apretar enter, y en ese nuevo espacio vacío, escribir o pegar la dirección IP, luego apretar la tecla TAB y asignarle un nombre como dominio, en mi caso yo le asignaré corridor.thm. Debería quedar algo así:</p>
+
+<p>Posteriormente, para guardar los cambios, tenemos que hacer los siguientes pasos:</p>
+
+<p>Apretar ESC
+  Escribir dos puntos “:”
+  Escribir “wq!” (w=write(escribir), q=quit(salir), !=Forzar salida)</p>
+
+<p>Ahora con esto realizado, estamos listos para visualizar el dominio: http://corridor.thm/ en nuestro navegador, si lo hicieron bien, debería verse así:</p>
+
+<p>Vemos que está funcionando correctamente. Ahora nos muestra una página web, en la cual podemos ver 13 puertas iguales, 6 a nuestro lado izquierdo, 6 a nuestro lado derecho y una en frente al fondo. Si pasamos el mouse por encima de la manilla de las mismas, podemos ver que cambia el logo de nuestro puntero y si holdeamos con el mouse, podemos ver que en cada puerta nos muestra un hash diferente. Un hash que a simple vista, pareciera ser MD5. Entonces… ¿abramos todas las puertas en una nueva pestaña?:</p>
+
+<p>En cada puerta que “abrimos”, nos muestra la misma imagen, una sala en blanco vacía, sin ninguna diferencia entre las demas. Pero si nos fijamos bien, cada sala nos muestra una URL diferente, con un HASH diferente:</p>
+
+<p>Para no rellenar la página con 13 imagenes, solo mostraré 3</p>
+
+<p>Bien, ahora lo primero que haremos, será confirmar si estoy en lo correcto, usando la aplicación hash-identifier que viene incluida en Kali Linux, copiaremos cualquier hash y verificaremos que sea MD5.</p>
+
+<p>Para esto, solo escribimos hash-identifier en la terminal de Kali y luego pegamos nuestro hash (para confirmar que sean todos, puedes  poner todos uno por uno, pero a simple vista son todos MD5, así que no es necesario, sin embargo, te invito a probar!)</p>
+
+<p>Efectivamente.</p>
+
+<p>Qué es un HASH?</p>
+
+<p>Un hash a muy grandes rasgos, es una función criptográfica, que genera valores únicos e irrepetibles. Practicamente es método de codificación.</p>
+
+<p>En base a esto, haremos la funcion inversa a la codificación, realizaremos la decodificación de estos hashes, esto lo haremos utilizando otra aplicación más que viene incluida en nuestro Kali Linux, llamada hashcat. Pero antes, necesitamos reunir todos los hashes de cada una de las salas en un archivo de texto, algo como esto:</p>
+
+<p>Nosotros podemos usar muchas herramientas para esto, en este writeup mostraré una forma “local” y otra “online” de hacerlo.</p>
+
+<p>Entonces, vamos a nuestra terminal y escribimos lo siguiente:</p>
+
+<p>hashcat -m 0 “hash.txt” /usr/share/wordlist/rockyou.txt</p>
+
+<p>Traducción del comando:</p>
+
+<p>-m= Modo - Con esto le decimos a hashcat que algoritmo de codificación que vamos a insertar.</p>
+
+<p>0= Modo MD5</p>
+
+<p>“hash.txt”= Ingresamos la ruta de nuestro archivo con los hashes, en este caso, como el archivo está en el mismo directorio donde voy a correr hashcat,  el mío es hash.txt</p>
+
+<p>/usr/share/wordlist/rockyou.txt= Le decimos la ruta del diccionario que queremos usar, en este caso y en el de la mayoría de los CTF, rockyou.txt.</p>
+
+<p>Lo ejecutamos y debería mostrar el procedimiento de decodificación, algo como esto:</p>
+
+<p>Imagen sacada de hashcat.net ya que como yo ya hice la máquina, el verbose es distinto.</p>
+
+<p>En algunos equipos puede demorar más, en otros puede durar menos, no te apures.</p>
+
+<p>Si en el campo de Status dice Cracked, felicitaciones! has crackeado los hashes MD5.
+Ahora para ver el resultado de esta decodificación, utilizamos el mismo comando que usamos para crackear, pero al final del comando agregamos el argumento –show, esto para que nos muestre el resultado:</p>
+
+<p>El otro método, es usar la página Crackstation.</p>
+
+<p>Simplemente, entramos al link enlazado anteriormente y nos aparecerá la página de inicio junto a un recuadro en blanco grande, dentro de el, copiamos los mismos hashes que anteriormente guardamos y luego damos click en Crack Hashes, esta opción es más rapida si y solo si, la página tiene en su base de datos el hash que buscamos. Te recomiendo investigar más a profundo la página, ¿puedes creer que mas de 190GB en hashes MD5 &amp; SHA1?</p>
+
+<p>Y finalemente, nos muestra el resultado de los hashes ingresados!</p>
+
+<p>Bien, podemos ver que cada hash, de cada puerta es un número, que va del 1 al 13. Entonces, si pensamos y le damos una vuelta a la vulnerabilidad IDOR, que pasaría si intentamos entrar a una puerta fuera del alcance?, como quizás el 14, o inclusive el 0?, vamos a intentarlo, para que funcione, tenemos que hacerlo en el mismo formato en el que están codificadas, osea MD5.</p>
+
+<p>Para esto, podemos buscar en google algo así “md5 encoder”, yo personalmente recomomiendo elmah.io.</p>
+
+<p>Dentro, vamos a escribir el texto que queremos que se codifique en MD5, probaremos primero con 14:</p>
+
+<p>Bueno, nos entrega este resultado, entonces, ¿probamos?.</p>
+
+<p>Insertemoslo en nuestra URL a ver si nos muestra algo:</p>
+
+<p>Aparentemente, no nos muestra nada jaja, pero no perdamos la esperanza!</p>
+
+<p>Probemos hasheando el número 0, quizás, es el número de la suerte. Nos entrega el siguiente hash:</p>
+
+<p>Entonces ahora, como hicimos recién, pongamos el hash entregado en la URL.</p>
+
+<p>GUALÁ!!!, tenemos la flag! (censurada por políticas de THM)</p>
+
+<p>Si te ha gustado el writeup, te invito a que me apoyes, siguiendome en mi redes sociales, no te olvides que también tengo la versión en video en la plataforma de YouTube de esta misma sala!!</p>
+
+<p>TryHackMe ~ Corridor ~ WriteUp en Español ~ Paso a Paso</p>
+
+<p>Agradecería mucho si pudieses compartirlo con tus amigos o personas que le gustaría leer mi contenido!.</p>
+
+<p>Nos vemos !!!</p>
+:ET

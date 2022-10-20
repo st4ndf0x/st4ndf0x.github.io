@@ -1,11 +1,13 @@
-I"Y$<p><a href="https://tryhackme.com/room/corridor">CORRIDOR</a>
+I"�$<p><a href="https://tryhackme.com/room/corridor">CORRIDOR</a>
 by st4ndf0x  <img src="https://tryhackme-badges.s3.amazonaws.com/StandFox.png" alt="TryHackMe" /></p>
 
 <p>Bienvenido, tienes el placer de leer mi primer writeup!.
 Hoy vamos a estar resolviendo la sala <strong>Corridor</strong>, en esta sala exploraremos una vulnerabilidad llamada “<strong>IDOR</strong>”, la cual a muy grandes rasgos es la función cuando una aplicación web, permite a un usuario acceder directamente a objetos, en base a esto, debido a errores de implementación de control de acceso, el usuario termina con el poder de acceder a objetos a los que no debería tener permisos. Esta vulnerabilidad se encuentra en el Top 10 de <strong>OWASP 2017 - Broken Access Control</strong>.</p>
 
-<p><img src="/img/rooms/easy/corridor/banner.png" alt="alt text" title="Corridor" />
-<strong>Dificultad: <span style="color:green">Fácil</span> ~  Categoría: WEB</strong></p>
+<p><img src="/img/rooms/easy/corridor/banner.png" alt="alt text" title="Corridor" /></p>
+<p align="center">
+**Dificultad:** <span style="color:green">**Fácil**</span> ~  **Categoría: WEB**
+</p>
 
 <p><strong><em>Here we go!</em></strong></p>
 
@@ -98,7 +100,7 @@ Ahora para ver el resultado de esta decodificación, utilizamos el mismo comando
 
 <p>Insertemoslo en nuestra URL a ver si nos muestra algo:
 <img src="/img/rooms/easy/corridor/14.png" alt="alt text" />
-<em>Aparentemente, no nos muestra nada jaja, pero no perdamos la esperanza!</em></p>
+<em>Aparentemente, no nos muestra nada jaja, <strong>pero no perdamos la esperanza!</strong></em></p>
 
 <p>Probemos hasheando el número 0, quizás, es el número de la suerte. Nos entrega el siguiente hash:
 <img src="/img/rooms/easy/corridor/15.png" alt="alt text" /></p>
@@ -112,7 +114,7 @@ Ahora para ver el resultado de esta decodificación, utilizamos el mismo comando
 
 <p>Si te ha gustado el writeup, te invito a que me apoyes, siguiendome en mi redes sociales, no te olvides que también tengo la versión en video en la plataforma de <strong>YouTube</strong> de esta misma sala!!</p>
 
-<p><a href="https://www.youtube.com/watch?v=RNwifym-q54">TryHackMe Corridor  WriteUp en Español  Paso a Paso</a></p>
+<p><a href="https://www.youtube.com/watch?v=RNwifym-q54">TryHackMe ~ Corridor ~ WriteUp en Español ~ Paso a Paso</a></p>
 
 <p>Agradecería mucho si pudieses compartirlo con tus amigos o personas que le gustaría leer mi contenido!.</p>
 

@@ -1,10 +1,10 @@
-I"2<p>CORRIDOR
+I"i<p>CORRIDOR
 by st4ndf0x</p>
 
 <p>Bienvenido, tienes el placer de leer mi primer writeup!.
 Hoy vamos a estar resolviendo la sala Corridor, en esta sala exploraremos una vulnerabilidad llamada “IDOR”, la cual a muy grandes rasgos es la función cuando una aplicación web, permite a un usuario acceder directamente a objetos, en base a esto, debido a errores de implementación de control de acceso, el usuario termina con el poder de acceder a objetos a los que no debería tener permisos. Esta vulnerabilidad se encuentra en el Top 10 de OWASP 2017 - Broken Access Control.</p>
 
-<p>Dificultad: Fácil ~  Categoría: WEB</p>
+<p><strong>Dificultad:</strong> <strong>Fácil</strong> ~  <strong>Categoría: WEB</strong></p>
 
 <p>Here we go!</p>
 
@@ -94,7 +94,7 @@ Ahora para ver el resultado de esta decodificación, utilizamos el mismo comando
 
 <p>Si te ha gustado el writeup, te invito a que me apoyes, siguiendome en mi redes sociales, no te olvides que también tengo la versión en video en la plataforma de YouTube de esta misma sala!!</p>
 
-<p>TryHackMe Corridor  WriteUp en Español  Paso a Paso</p>
+<p>TryHackMe ~ Corridor ~ WriteUp en Español ~ Paso a Paso</p>
 
 <p>Agradecería mucho si pudieses compartirlo con tus amigos o personas que le gustaría leer mi contenido!.</p>
 
